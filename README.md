@@ -1,62 +1,108 @@
-# ♻️ TrashBot - AI Powered Intelligent Waste Collection & Segregation Robot
+# ♻️ TrashBot
+### AI-Powered Intelligent Waste Collection & Segregation Robot
 
-![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)
-![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-green)
-![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-5-red?logo=raspberrypi)
-![ESP32](https://img.shields.io/badge/ESP32-IoT-orange)
-![Flask](https://img.shields.io/badge/Flask-Web%20Dashboard-black?logo=flask)
-![OpenCV](https://img.shields.io/badge/OpenCV-Computer%20Vision-blue?logo=opencv)
-![License](https://img.shields.io/badge/License-MIT-yellow)
+<p align="center">
+<img src="https://img.shields.io/badge/Python-3.10-blue?logo=python">
+<img src="https://img.shields.io/badge/YOLOv8-Ultralytics-success">
+<img src="https://img.shields.io/badge/Raspberry%20Pi-5-red?logo=raspberrypi">
+<img src="https://img.shields.io/badge/ESP32-Embedded-orange">
+<img src="https://img.shields.io/badge/OpenCV-Computer%20Vision-blue?logo=opencv">
+<img src="https://img.shields.io/badge/Flask-Web%20Dashboard-black?logo=flask">
+<img src="https://img.shields.io/badge/License-MIT-yellow">
+</p>
 
 ---
 
 ## 📖 Overview
 
-**TrashBot** is an AI-powered autonomous waste collection and segregation robot designed for indoor environments such as educational institutions, offices, and hospitals.
+**TrashBot** is an AI-powered autonomous waste collection and segregation robot designed to automate indoor waste management using Computer Vision, Robotics, and Embedded Systems.
 
-The system combines embedded systems, robotics, computer vision, and machine learning to automatically detect, classify, collect, and segregate waste with minimal human intervention.
+The robot navigates autonomously, detects waste objects using **YOLOv8**, classifies them into biodegradable or non-biodegradable categories, and picks them using a robotic arm before placing them into the appropriate waste bin.
 
 ---
 
-## ✨ Features
+## 🚀 Features
 
-- 🤖 Autonomous indoor navigation
-- 👀 Real-time waste detection using YOLOv8
-- ♻️ Waste classification into biodegradable and non-biodegradable categories
-- 🦾 3D-printed robotic arm for pick-and-place operation
-- 📷 Raspberry Pi Camera based vision system
-- ⚙️ ESP32-based embedded control
-- 🌐 Flask dashboard for monitoring and control
-- 🔋 Battery-powered portable system
+- 🤖 Autonomous Indoor Navigation
+- 👁️ Real-Time Waste Detection
+- 🧠 YOLOv8 AI Object Detection
+- ♻️ Intelligent Waste Segregation
+- 🦾 Servo-Based Robotic Arm
+- 📷 Raspberry Pi Camera Integration
+- ⚙️ ESP32 Embedded Controller
+- 🌐 Flask Web Dashboard
+- 🔋 Portable Battery Powered
+
+---
+
+# 📷 Project Images
+
+## TrashBot
+
+<img src="images/1.jpeg" width="700">
+
+---
+
+## Robotic Arm
+
+<img src="images/2.jpeg" width="700">
+
+---
+
+## Block Diagram
+
+<img src="images/3.jpeg" width="700">
+
+---
+
+## Dashboard
+
+<img src="images/Dashboard.jpeg" width="700">
+
+---
+
+## Flowchart
+
+<img src="images/FlowChart.png" width="700">
+
+---
+
+## Demo Video
+
+The project demonstration video is available inside the **images** folder.
+
+```
+images/Test_Video.mp4
+```
 
 ---
 
 # 🏗️ System Architecture
 
 ```
-                 Raspberry Pi 5
-                        │
-        ┌───────────────┼───────────────┐
-        │               │               │
-   Pi Camera         LiDAR/ToF      Flask Dashboard
-        │               │
-        │               │
-    YOLOv8 Object Detection
-        │
+                   Raspberry Pi 5
+                         │
+         ┌───────────────┼───────────────┐
+         │               │               │
+     Pi Camera        LiDAR Sensor   Flask Dashboard
+         │
+         ▼
+   YOLOv8 Object Detection
+         │
 Waste Classification
-        │
+         │
 ESP32 Controller
-        │
-Servo Motors + DC Motors
-        │
+         │
+Motor Driver
+         │
 Robotic Arm
-        │
+         │
 Waste Bin
 ```
 
 ---
 
-# ⚙️ Hardware Used
+# 🛠 Hardware Used
 
 - Raspberry Pi 5
 - ESP32
@@ -75,11 +121,12 @@ Waste Bin
 
 - Python
 - OpenCV
-- YOLOv8 (Ultralytics)
+- YOLOv8
 - Flask
 - Embedded C
 - Arduino IDE
-- Git & GitHub
+- Git
+- GitHub
 
 ---
 
@@ -89,45 +136,49 @@ Waste Bin
 TrashBot/
 │
 ├── docs/
-│   └── Project_Report.pdf
+│   ├── Project_Report.pdf
+│   └── README.md
 │
 ├── images/
+│   ├── 1.jpeg
+│   ├── 2.jpeg
+│   ├── 3.jpeg
+│   ├── 4.jpeg
+│   ├── 5.jpeg
+│   ├── 6.jpeg
+│   ├── Dashboard.jpeg
+│   ├── FlowChart.png
+│   ├── Test_Video.mp4
+│   └── README.md
 │
 ├── raspberry_pi/
-│   ├── main.py
-│   ├── detection.py
-│   ├── navigation.py
-│   ├── motor_controller.py
-│   └── camera.py
+│   ├── config/
+│   │     ├── coco.names
+│   │     └── yolov3.cfg
+│   │
+│   ├── live_serial.py
+│   ├── segregation_yolo_v8.py
+│   ├── waste_segregation.py
+│   └── README.md
 │
 ├── esp32/
-│   └── firmware.ino
+│   ├── robotic_arm.ino
+│   ├── waste_segregation.ino
+│   └── README.md
 │
 ├── flask_dashboard/
 │   ├── app.py
-│   ├── templates/
-│   └── static/
+│   ├── index.html
+│   └── README.md
 │
 ├── requirements.txt
-├── README.md
-└── LICENSE
+├── LICENSE
+└── README.md
 ```
 
 ---
 
-# 🔄 Working Flow
-
-1. Robot patrols the environment.
-2. LiDAR/ToF detects nearby objects.
-3. Camera captures an image.
-4. YOLOv8 classifies the object.
-5. ESP32 controls the robotic arm.
-6. Waste is picked up.
-7. Waste is placed into the correct bin.
-
----
-
-# 🚀 Installation
+# ⚙️ Installation
 
 Clone the repository
 
@@ -135,33 +186,42 @@ Clone the repository
 git clone https://github.com/nivedrajeeshvp/TrashBot.git
 ```
 
-Install dependencies
+Move into the project
+
+```bash
+cd TrashBot
+```
+
+Install Python dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run the application
+Run the Flask Dashboard
 
 ```bash
-python raspberry_pi/main.py
+python flask_dashboard/app.py
+```
+
+Run Waste Detection
+
+```bash
+python raspberry_pi/waste_segregation.py
 ```
 
 ---
 
-# 📸 Project Images
+# 🔄 Workflow
 
-Add screenshots here after uploading them to the `images/` folder.
-
-Example:
-
-```markdown
-![Robot](images/robot.jpg)
-
-![Robotic Arm](images/robotic_arm.jpg)
-
-![Dashboard](images/dashboard.png)
-```
+1. Robot patrols autonomously.
+2. LiDAR detects nearby objects.
+3. Camera captures image.
+4. YOLOv8 identifies waste.
+5. ESP32 controls robotic arm.
+6. Waste is picked.
+7. Waste is placed into the correct bin.
+8. Dashboard updates the waste count.
 
 ---
 
@@ -169,10 +229,20 @@ Example:
 
 - Outdoor autonomous navigation
 - GPS integration
-- Mobile application
 - Cloud monitoring
-- Multi-robot coordination
-- Smart city integration
+- Mobile Application
+- Smart City Integration
+- Multi-Robot Collaboration
+
+---
+
+# 📚 Documentation
+
+Complete project documentation is available here:
+
+```
+docs/Project_Report.pdf
+```
 
 ---
 
@@ -189,20 +259,16 @@ Department of Electronics and Communication Engineering
 
 ---
 
-# 📄 Project Report
-
-The complete project report is available in:
-
-```
-docs/Project_Report.pdf
-```
-
----
-
-# 📜 License
+# 📄 License
 
 This project is licensed under the MIT License.
 
 ---
 
-⭐ If you found this project interesting, consider giving it a **Star**!
+## ⭐ Support
+
+If you found this project useful,
+
+⭐ Star this repository.
+
+It helps others discover the project and supports future development.
