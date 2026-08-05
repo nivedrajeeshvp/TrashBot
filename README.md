@@ -140,15 +140,12 @@ TrashBot/
 │   └── README.md
 │
 ├── images/
-│   ├── 1.jpeg
-│   ├── 2.jpeg
-│   ├── 3.jpeg
-│   ├── 4.jpeg
-│   ├── 5.jpeg
-│   ├── 6.jpeg
-│   ├── Dashboard.jpeg
-│   ├── FlowChart.png
-│   ├── Test_Video.mp4
+│   ├── dashboard.jpeg
+│   ├── robot_bin.jpeg
+│   ├── robot_structure.jpeg
+│   ├── robotic_arm.jpeg
+│   ├── flowchart.png
+│   ├── trashbot_demo.mp4
 │   └── README.md
 │
 ├── raspberry_pi/
