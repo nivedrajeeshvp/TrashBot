@@ -39,31 +39,31 @@ The robot navigates autonomously, detects waste objects using **YOLOv8**, classi
 
 ## TrashBot
 
-<img src="images/1.jpeg" width="700">
+<img src="images/robot_structure.jpeg" width="700">
 
 ---
 
 ## Robotic Arm
 
-<img src="images/2.jpeg" width="700">
+<img src="images/robotic_arm.jpeg" width="700">
 
 ---
 
 ## Block Diagram
 
-<img src="images/3.jpeg" width="700">
+<img src="images/block_diagram.jpeg" width="700">
 
 ---
 
 ## Dashboard
 
-<img src="images/Dashboard.jpeg" width="700">
+<img src="images/dashboard.jpeg" width="700">
 
 ---
 
 ## Flowchart
 
-<img src="images/FlowChart.png" width="700">
+<img src="images/flowchart.png" width="700">
 
 ---
 
