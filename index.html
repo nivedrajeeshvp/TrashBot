@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrashBot Control Center</title>
+    <style>
+        :root {
+            --primary: #00ff88;
+            --danger: #ff4444;
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f8fafc;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            background: #000;
+        }
+
+        .video-container img {
+            width: 100%;
+            display: block;
+        }
+
+        .controls {
+            margin-top: 25px;
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        button {
+            flex: 1;
+            padding: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .btn-start {
+            background-color: var(--primary);
+            color: var(--bg);
+        }
+
+        .btn-start:hover {
+            box-shadow: 0 0 15px var(--primary);
+            transform: scale(1.02);
+        }
+
+        .btn-stop {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .btn-stop:hover {
+            box-shadow: 0 0 15px var(--danger);
+            transform: scale(1.02);
+        }
+
+        .status-panel {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 800px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .stat-card {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>TrashBot AI Dashboard</h1>
+        <p>Raspberry Pi 5 Autonomous Control</p>
+    </div>
+
+    <div class="video-container">
+        <img src="{{ url_for('video_feed') }}" alt="Live Feed">
+    </div>
+
+    <div class="controls">
+        <button class="btn-start" onclick="sendCommand('start')">Start Patrol</button>
+        <button class="btn-stop" onclick="sendCommand('stop')">Emergency Stop</button>
+    </div>
+
+    <div class="status-panel">
+        <div class="stat-card">
+            <div class="stat-label">System Status</div>
+            <div id="status" class="stat-value">Connecting...</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Ultrasonic Distance</div>
+            <div id="dist" class="stat-value">0.0 cm</div>
+        </div>
+        <div class="stat-card" style="border-bottom-color: #22c55e;">
+            <div class="stat-label">Bio Waste Total</div>
+            <div id="bio-count" class="stat-value">0</div>
+        </div>
+        <div class="stat-card" style="border-bottom-color: #eab308;">
+            <div class="stat-label">Non-Bio Waste Total</div>
+            <div id="non-bio-count" class="stat-value">0</div>
+        </div>
+    </div>
+
+    <script>
+        function sendCommand(cmd) {
+            fetch(`/command/${cmd}`)
+                .then(response => response.json())
+                .then(data => {
+                    if(data.status === 'success') {
+                        console.log('Command sent: ' + cmd);
+                    } else {
+                        alert('Error: ' + data.message);
+                    }
+                });
+        }
+
+        // Auto-update status every 1 second
+        setInterval(() => {
+            fetch('/status')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('status').innerText = data.status;
+                    document.getElementById('dist').innerText = data.dist + ' cm';
+                    document.getElementById('bio-count').innerText = data.bio;
+                    document.getElementById('non-bio-count').innerText = data.non_bio;
+                    
+                    // Optional: Change color if emergency stop or danger
+                    if(data.dist < 15 && data.dist > 0) {
+                        document.getElementById('dist').style.color = '#ff4444';
+                    } else {
+                        document.getElementById('dist').style.color = '#00ff88';
+                    }
+                })
+                .catch(err => console.error('Status fetch failed:', err));
+        }, 1000);
+    </script>
+</body>
+</html>
