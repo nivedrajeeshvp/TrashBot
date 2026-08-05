@@ -51,7 +51,7 @@ The robot navigates autonomously, detects waste objects using **YOLOv8**, classi
 
 ## Block Diagram
 
-<img src="images/block_diagram.jpeg" width="700">
+<img src="images/block_diagram.png" width="700">
 
 ---
 
