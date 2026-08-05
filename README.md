@@ -72,7 +72,7 @@ The robot navigates autonomously, detects waste objects using **YOLOv8**, classi
 The project demonstration video is available inside the **images** folder.
 
 ```
-images/Test_Video.mp4
+images/trashbot_demo.mp4
 ```
 
 ---
